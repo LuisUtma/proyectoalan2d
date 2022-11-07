@@ -1,7 +1,13 @@
 <?php
-include "Conexion.php";
-
+  $nombre = $_POST['busqueda'];
+  include "Conexion.php";
 ?>
+
+<?php
+            $select_especifico="SELECT * FROM libros where nombre='$nombre'";
+            $result1=mysqli_query($conn,$select_especifico);
+            
+            ?>
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
@@ -23,7 +29,7 @@ include "Conexion.php";
             <?php
             $sql="SELECT * from libros";
             $result=mysqli_query($conn,$sql);
-            while($mostrar=mysqli_fetch_array($result)){
+            while($mostrar=mysqli_fetch_array($result1)){
             ?>
             <div  class="product-container">
                 <h3><?php echo $mostrar['nombre'] ?></h3>
